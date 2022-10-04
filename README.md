@@ -44,7 +44,9 @@ IDEAS
 
 -- Add layer 7 methods
 
--- Optimize malicious code   
+-- Optimize malicious code  
+
+-- Add ip scanner and exploiter
 
 IMAGES
 
@@ -53,5 +55,9 @@ IMAGES
 -----------------------------------------------------------
 
 You are allowed to resell but you must credit the owner.
+
+-----------------------------------------------------------
+
+!! FOR EDUCATIONAL PURPOSES ONLY !!
 
 -----------------------------------------------------------
