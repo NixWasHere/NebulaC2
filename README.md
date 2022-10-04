@@ -40,7 +40,11 @@ IDEAS
 
 -- Add layer 7 methods
 
--- Optimize malicious code        
+-- Optimize malicious code   
+
+IMAGES
+
+![C2](https://user-images.githubusercontent.com/73953379/193830831-962cf5b3-5eac-496e-834d-fbe06820d027.png)
 
 -----------------------------------------------------------
 
