@@ -1,11 +1,3 @@
-ooooo      ooo ooooo ooooooo  ooooo   .oooooo.     .oooo.   
-`888b.     `8' `888'  `8888    d8'   d8P'  `Y8b  .dP""Y88b  
- 8 `88b.    8   888     Y888..8P    888                ]8P' 
- 8   `88b.  8   888      `8888'     888              .d8P'  
- 8     `88b.8   888     .8PY888.    888            .dP'     
- 8       `888   888    d8'  `888b   `88b    ooo  .oP     .o 
-o8o        `8  o888o o888o  o88888o  `Y8bood8P'  8888888888 
-
 HOWTO
 
 -- Add username:password in logins.txt for many accounts
