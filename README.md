@@ -48,6 +48,8 @@ IDEAS
 
 -- Add ip scanner and exploiter
 
+-- API support
+
 IMAGES
 
 ![C2](https://user-images.githubusercontent.com/73953379/193830831-962cf5b3-5eac-496e-834d-fbe06820d027.png)
