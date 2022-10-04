@@ -1,5 +1,9 @@
 HOWTO
 
+-- run.bat Screens the cnc script on port 6667 (Default)
+
+-- connect.bat connects to the cnc using putty
+
 -- Add username:password in logins.txt for many accounts
 
 -- To add methods make a method.py script in "Commands" then add the command in main script "cnc.py"
