@@ -2,6 +2,8 @@
 
 HOWTO 
 
+-- Open cmd in folder and run 'pip install -r requirements.txt'
+
 -- run.bat Screens the cnc script on port 6667 (Default)
 
 -- connect.bat connects to the cnc using putty
