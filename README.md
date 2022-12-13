@@ -40,7 +40,16 @@ CHANGELOG
 10/2/2022/
 - Made code even more optimized
 
-- Added "About" and fixed unknown code errors                                                          
+- Added "About" and fixed unknown code errors 
+
+12/13/2022/
+- Fixed only one slave connection
+
+- Fixed Layer 4 attacks and removed useless ones
+
+- Removed Layer 3 method
+
+- Optimized code
 
 IDEAS
 
