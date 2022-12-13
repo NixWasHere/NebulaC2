@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Layer 4
-from Commands.hex import hexa
+from Commands.hexa import hexa
 from Commands.syn import syn
 from Commands.tcp import tcp
 from Commands.tcpsyn import tcpsyn
