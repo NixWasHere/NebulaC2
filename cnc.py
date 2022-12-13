@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from Commands.hex import hex
 # Layer 4
+from Commands.hex import hexa
 from Commands.syn import syn
 from Commands.tcp import tcp
 from Commands.tcpsyn import tcpsyn
@@ -304,7 +304,7 @@ def command_line(client):
                 tcpsyn(args, validate_ip, validate_port, validate_time, send, client, ansi_clear, attack_sent1,
                        broadcast, data)
             elif command == '.HEX':  # Specific HEXADECIMAL Flood
-                hex(args, validate_ip, validate_port, validate_time, send, client, ansi_clear, attack_sent1, broadcast,
+                hexa(args, validate_ip, validate_port, validate_time, send, client, ansi_clear, attack_sent1, broadcast,
                     data)
             send(client, prompt, False)
         except:
