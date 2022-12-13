@@ -1,6 +1,6 @@
 from colorama import Fore
 
-def hex(args, validate_ip, validate_port, validate_time, send, client, ansi_clear, attack_sent1, broadcast, data):
+def hexa(args, validate_ip, validate_port, validate_time, send, client, ansi_clear, attack_sent1, broadcast, data):
     if len(args) == 4:
         ip = args[1]
         port = args[2]
