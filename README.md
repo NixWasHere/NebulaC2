@@ -16,6 +16,8 @@ HOWTO
 
 -- Add username:password in sql database
 
+-- Configure your database using the files in sql
+
 -- To add methods make a method.py script in "Commands" then add the command in main script "cnc.py"
 
 -- Connect from putty using telnet/raw
