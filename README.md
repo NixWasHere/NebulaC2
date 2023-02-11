@@ -1,11 +1,10 @@
 ![Login](https://user-images.githubusercontent.com/73953379/193839231-a892fe6b-b5e7-43d5-a934-4d0941a20497.png)
 
+WORK IN PROGRESS!!
 
-WORK IN PROGRESS!
+CURRENTLY KIND OF WORKS
 
-CURRENTLY DOESN'T WORK
-
-
+!! CAN'T CONNECT MORE THAN ONE BOT !!
 
 HOWTO 
 
@@ -13,7 +12,9 @@ HOWTO
 
 -- Open cmd in folder and run 'pip install -r requirements.txt'
 
--- Add username:password in logins.txt for many accounts
+-- Change website domain to your database in cnc.py
+
+-- Add username:password in sql database
 
 -- To add methods make a method.py script in "Commands" then add the command in main script "cnc.py"
 
@@ -54,13 +55,16 @@ CHANGELOG
 
 - Optimized code
 
+2/11/2023/
+- Fixed half code
+
+- Many bugs
+
+- Needs optimization
+
 IDEAS
 
--- Add more functions if theres a user named root
-
 -- Add ntp amp attack
-
--- Add layer 7 methods
 
 -- Optimize malicious code  
 
