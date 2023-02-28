@@ -80,3 +80,5 @@ You are allowed to resell but you must credit the owner.
 !! FOR EDUCATIONAL PURPOSES ONLY !!
 
 -----------------------------------------------------------
+
+Not responsible for any malicious use of this tool.
