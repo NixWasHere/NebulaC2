@@ -86,7 +86,7 @@ IDEAS
 
 -----------------------------------------------------------
 
-You are allowed to resell but you must credit the owner.
+![C2](https://user-images.githubusercontent.com/73953379/222468678-26a46e94-0f1d-49f9-b5e2-6ce5d6dc20cd.png)
 
 -----------------------------------------------------------
 
