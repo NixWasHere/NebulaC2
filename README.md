@@ -7,12 +7,6 @@ HOWTO
 
 -- Open cmd in folder and run 'pip install -r requirements.txt'
 
--- Change website domain to your database in cnc.py
-
--- Add username:password in sql database
-
--- Configure your database using the files in sql
-
 -- To add methods make a method.py script in "Commands" then add the command in main script "cnc.py"
 
 -- Connect from putty using telnet/raw
@@ -66,10 +60,6 @@ IDEAS
 -- Optimize malicious code  
 
 -- Add ip scanner and exploiter
-
--- API support
-
-![C2](https://user-images.githubusercontent.com/73953379/193830831-962cf5b3-5eac-496e-834d-fbe06820d027.png)
 
 -----------------------------------------------------------
 
