@@ -53,6 +53,29 @@ CHANGELOG
 
 - Needs optimization
 
+2/3/2023/
+- Changed name from NixC2 to NebulaC2
+
+- Fixed the whole code
+
+- Less bugs
+
+- Optimized the code
+
+- Added Layer 7
+
+- Added more methods
+
+- Added commands
+
+- Added captcha generator
+
+- Added user registration
+
+- Added admin commands
+
+- Many more!
+
 IDEAS
 
 -- Add ntp amp attack
