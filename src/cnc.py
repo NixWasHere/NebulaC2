@@ -492,7 +492,11 @@ def main():
         jsonObject = json.load(jsonFile)
         jsonFile.close()
     cnc_port = int(jsonObject['cnc_port'])
+    reg_port = int(jsonObject['reg_port'])
     cnc_host = jsonObject['cnc_host']
+    if cnc_port == reg_port:
+        print("Cnc port and registration port must be different from eachother.")
+        exit()
     init(convert=True)
     sock = socket.socket()
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
