@@ -1,4 +1,0 @@
-{user_name_get}:{password_get}
-
-Nix:WasHere
-Admin:Nix
