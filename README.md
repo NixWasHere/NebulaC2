@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-    <img width="33%" src="https://user-images.githubusercontent.com/73953379/222469028-8940929c-4dd0-4f38-a718-185d2efd9b32.png">
+    <img width="100%" src="https://user-images.githubusercontent.com/73953379/222469028-8940929c-4dd0-4f38-a718-185d2efd9b32.png">
 </p>
 
 WORKS ONLY WITH PUBLIC IP
@@ -90,7 +90,7 @@ IDEAS
 -----------------------------------------------------------
 
 <p align="center" width="100%">
-    <img width="33%" src="https://user-images.githubusercontent.com/73953379/222468678-26a46e94-0f1d-49f9-b5e2-6ce5d6dc20cd.png">
+    <img width="100%" src="https://user-images.githubusercontent.com/73953379/222468678-26a46e94-0f1d-49f9-b5e2-6ce5d6dc20cd.png">
 </p>
 
 -----------------------------------------------------------
