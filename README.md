@@ -87,6 +87,12 @@ IDEAS
 
 -- Add ip scanner and exploiter
 
+-- Proxy support
+
+-- Send attacks using api
+
+-- Spoofers
+
 -----------------------------------------------------------
 
 <p align="center" width="100%">
