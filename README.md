@@ -2,7 +2,7 @@
     <img width="100%" src="https://user-images.githubusercontent.com/73953379/222469028-8940929c-4dd0-4f38-a718-185d2efd9b32.png">
 </p>
 
-Credit for main functions: wodx
+Credit for main functions: wodxgod
 
 WORKS ONLY WITH PUBLIC IP
 
