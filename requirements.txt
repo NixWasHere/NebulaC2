@@ -2,5 +2,3 @@ cloudscraper
 requests
 ipaddress
 colorama
-pyinstaller
-autopytoexe
