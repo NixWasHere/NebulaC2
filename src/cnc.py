@@ -61,19 +61,10 @@ lightwhite = color("LIGHTWHITE_EX")
 gray = color("LIGHTBLACK_EX")
 
 banner = f"""{gray}
-⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢾⠱⢕⠠⢀⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠈⢆⢸⢣⠁⠛⡄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⢏⠨⢪⢫⣷⡻⢆⠀⠀⠀⠀
-⠀⠀⠀⠀⣰⣯⢖⠆⠁⠀⣸⡈⠉⠀⠀⠀⠀
-⠀⠀⠀⠀⡾⣇⡔⡳⠀⢠⢻⢳⣄⡀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⡇⣯⣶⢄⠀⢢⡻⣦⡀⠀⠀
-⠀⠀⠀⠀⠀⠘⢿⠼⢸⣋⠀⠀⡍⠻⣿⣦⠀
-⠀⠀⠀⠀⠀⠀⠆⡇⢸⡠⣐⠥⡝⠶⠛⢿⠧
-⠀⠀⠀⠀⢀⣠⣼⣧⣼⣷⣁⣒⣡⡴⠀⢸⡆
-⠀⠀⠀⣪⠿⠗⠂⠀⠔⠊⠉⠉⠉⠉⢉⢢⠇            {lightwhite}Nebula{gray}
-⠀⣠⠮⡷⠶⠿⠿⠭⠤⠤⣕⣲⣶⣶⠾⠋⠀
-⠊⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  _._     _,-'""`-._
+(,-.`._,'(       |\`-/|
+    `-.-' \ )-`( , o o)
+          `-    \`_`"'-            {lightwhite}MaltaNet{gray}
 """
 
 rules = f"""                {lightwhite}1. {gray}Do not attack .gov/.gob/.edu/.mil domains  
@@ -212,7 +203,7 @@ def captcha(send, client, grey):
 
 # Client handler
 def handle_client(client, address):
-    send(client, f'\x1bNebula | Login: Awaiting Response...\a', False)
+    send(client, f'\x1bMaltaNet | Login: Awaiting Response...\a', False)
     send(client, ansi_clear, False)
     send(client, f'{color("LIGHTBLACK_EX")}Connecting...')
     captcha(send, client, color("LIGHTBLACK_EX"))
@@ -315,25 +306,27 @@ def user(args, send, client):
 def update_title(client, name):
     while 1:
         try:
-            send(client, f"\33]0;N | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;M | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Ne | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;Ma | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Neb | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;Mal | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Nebu | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;Malt | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Nebul | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;Malta | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Nebula | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;MaltaN | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Nebul | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;MaltaNe | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Nebu | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;MaltaNet | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Neb | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;MaltaNe | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
-            send(client, f"\33]0;Ne | Running: {len(bots)} | Username: {name}\a", False)
+            send(client, f"\33]0;MaltaN | Running: {len(bots)} | Username: {name}\a", False)
+            time.sleep(1)
+            send(client, f"\33]0;Malta | Running: {len(bots)} | Username: {name}\a", False)
             time.sleep(1)
         except:
             client.close()
@@ -343,7 +336,7 @@ def command_line(client, username):
     for x in banner.split('\n'):
         send(client, x)
 
-    prompt = f'{color("LIGHTBLACK_EX")}[{color("WHITE")}Nebula{color("LIGHTBLACK_EX")}@{color("WHITE")}{username}{color("LIGHTBLACK_EX")}]:~# {color("LIGHTBLACK_EX")}'
+    prompt = f'{color("LIGHTBLACK_EX")}[{color("WHITE")}MaltaNet{color("LIGHTBLACK_EX")}@{color("WHITE")}{username}{color("LIGHTBLACK_EX")}]:~# {color("LIGHTBLACK_EX")}'
     send(client, prompt, False)
 
     while 1:
